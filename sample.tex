@@ -40,17 +40,17 @@
 \usepackage{pxjahyper}
 
 \begin{document}
-	\BibTeX のテストです\cite{YBCO_PhysRevLett.58.908}。
+	\BibTeX のテストです\cite{YBCO_PhysRevLett.58.908}。	
 	
-	使い方は同フォルダ内の「*.bst」や「*.bib」を参照してください。
-	
-	citeパッケージを使うことで引用文献を上付きカギカッコにしています。複数の文献を引用するときの書式なども自由に設定できます。
+	citeパッケージを使う場合、この文書のように引用文献を上付きカギカッコにできます。
+	通常の書式でよいならciteパッケージは不要です。
+	citeパッケージを用いると、複数の文献を引用するときの書式なども自由に設定できます。
 	\begin{itemize}\setlength{\itemsep}{3pt}
-		\item 2つ引用する場合はカンマ区切りになります\cite{YBCO_PhysRevLett.58.908, Kittel_BA74778859}。
-		\item 3つ以上引用する場合はハイフンになります\cite{YBCO_PhysRevLett.58.908, Kittel_BA74778859, website1}。
+		\item 2つ引用する場合はカンマ区切り\cite{YBCO_PhysRevLett.58.908, Kittel_BA74778859}。
+		\item 3つ以上引用する場合はハイフン\cite{YBCO_PhysRevLett.58.908, Kittel_BA74778859, website1}。
 	\end{itemize}
 	
-	大文字にすると通常サイズになるように設定することも可能です\Cite{YBCO_PhysRevLett.58.908}。	
+	大文字にすると通常サイズになるようなマクロを作成してあります\Cite{YBCO_PhysRevLett.58.908}。	
 	プリアンブルの「引用を上付きにしたくないとき」以下をコピペしてご利用ください。
 	
 	不具合や改善点があれば教えてください。
