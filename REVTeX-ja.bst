@@ -3,16 +3,16 @@
 	% 22/11/26------version 3
 	% 22/11/28------version 3.1
 	% 22/12/10------version 3.14
-	% 22/12/12------version 3.145
-	% 23/04/26------version 3.14159
-	% 24/08/19------version 3.141592
-	% 24/10/22------version 3.1415926
-	% 24/11/23------version 3.14159265
+	% 22/12/12------version 3.141
+	% 23/04/26------version 3.1415
+	% 24/08/19------version 3.14159
+	% 24/10/22------version 3.141592
+	% 24/11/23------version 3.1415926
 
 
 	% originated by junsrt.bst
 	% version 
-	FUNCTION {REVTeX-ja.version} { "3.14159265" }
+	FUNCTION {REVTeX-ja.version} { "3.1415926" }
 	
 	FUNCTION {id.bst} {"bst derived from REVTeX-ja.bst"}
 
