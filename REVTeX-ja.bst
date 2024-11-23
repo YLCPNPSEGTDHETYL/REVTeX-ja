@@ -7,11 +7,12 @@
 	% 23/04/26------version 3.14159
 	% 24/08/19------version 3.141592
 	% 24/10/22------version 3.1415926
+	% 24/11/23------version 3.14159265
 
 
 	% originated by junsrt.bst
 	% version 
-	FUNCTION {REVTeX-ja.version} { "3.1415926" }
+	FUNCTION {REVTeX-ja.version} { "3.14159265" }
 	
 	FUNCTION {id.bst} {"bst derived from REVTeX-ja.bst"}
 
@@ -43,6 +44,7 @@ ENTRY
     doi 
     pubmed 
     url 
+    urldate
     lastchecked 
   }
   {is.kanji.entry}
@@ -678,6 +680,19 @@ FUNCTION {format.pages}
   if$
 }
 
+FUNCTION {format.book.pages}
+{ pages duplicate$ empty$
+	'skip$
+	{ duplicate$ multi.page.check
+	
+	{ "pp." swap$ n.dashify }
+	{ "p." swap$ }
+	
+	if$
+	tie.or.space.connect 
+	}
+	if$
+}
 
 FUNCTION {format.vol.num.pages}
 { volume empty$
@@ -1074,21 +1089,21 @@ FUNCTION {href.command}
 	}
 
 FUNCTION {link.tag.open}
+{
+	doi duplicate$ empty$
 	{
-		doi duplicate$ empty$
-		{
-			pop$
-			url duplicate$ empty$
-			{
-				pop$ "" noop.command
-			}{
-				href.command
-			}
-			if$
-		}
+	pop$
+	url duplicate$ empty$
 	{
-		"https://doi.org/" swap$ *
-		href.command
+	pop$ "" noop.command
+	}{
+	href.command
+	}
+	if$
+	}
+	{
+	"https://doi.org/" swap$ *
+	href.command
 	}
 	if$
 	"{" * swap$ * "} {" *
@@ -1173,12 +1188,8 @@ FUNCTION {book}	%--書籍を引用する場合はこっち。
   format.btitle "title" output.checkNONEcomma
   link.shut
   crossref missing$
-    { format.bvolume output
-      new.block
-      format.number.series output
-%      new.sentence
-
-	  lparen
+    { 
+	lparen
       publisher "publisher" output.nNONE
       address output
     }
@@ -1186,11 +1197,23 @@ FUNCTION {book}	%--書籍を引用する場合はこっち。
       format.book.crossref output.nonnull
     }
   if$
-  format.edition output
 
   format.bOnlyYear "year" output.check
   rparen
   new.block
+  crossref missing$
+  {format.bvolume output
+  new.block
+  format.number.series output
+  }
+  { new.block
+  ""
+  }
+  if$
+  new.block
+  format.edition output
+  new.block
+  format.book.pages output
   note output
   fin.entry
 }
@@ -1386,12 +1409,15 @@ FUNCTION {misc}
 { output.bibitem
   format.authors output
   title howpublished new.block.checkb
-  format.title output
+  link.open
+  format.title "title" output.checkNONEcomma
+  link.shut
   howpublished new.block.checka
   howpublished output
   format.date output
 
   new.block
+  urldate output
   note output
   fin.entry
   empty.misc.check
