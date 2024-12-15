@@ -8,11 +8,12 @@
 	% 24/08/19------version 3.14159
 	% 24/10/22------version 3.141592
 	% 24/11/23------version 3.1415926
+	% 24/12/15------version 3.14159265
 
 
 	% originated by junsrt.bst
 	% version 
-	FUNCTION {REVTeX-ja.version} { "3.1415926" }
+	FUNCTION {REVTeX-ja.version} { "3.14159265" }
 	
 	FUNCTION {id.bst} {"bst derived from REVTeX-ja.bst"}
 
@@ -1067,6 +1068,13 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 
+FUNCTION {format.url}
+{ url empty$
+	{ "" }
+	{ url }
+	if$
+}
+
 FUNCTION {doi.base}
 	{
 		"https://doi.org/"
@@ -1409,8 +1417,9 @@ FUNCTION {misc}
 { output.bibitem
   format.authors output
   title howpublished new.block.checkb
-  link.open
   format.title "title" output.checkNONEcomma
+  link.open  
+  format.url "url" output.checkNONEcomma
   link.shut
   howpublished new.block.checka
   howpublished output
