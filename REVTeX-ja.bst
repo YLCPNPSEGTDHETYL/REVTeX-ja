@@ -9,11 +9,12 @@
 	% 24/10/22------version 3.141592
 	% 24/11/23------version 3.1415926
 	% 24/12/15------version 3.14159265
+	% 25/01/21------version 3.141592653
 
 
 	% originated by junsrt.bst
 	% version 
-	FUNCTION {REVTeX-ja.version} { "3.14159265" }
+	FUNCTION {REVTeX-ja.version} { "3.141592653" }
 	
 	FUNCTION {id.bst} {"bst derived from REVTeX-ja.bst"}
 
@@ -353,7 +354,7 @@ FUNCTION {format.names}
  		    {", " * t * }
 		    { numnames #2 =
  			{" and " * t * }
- 			{", and " * t * }
+ 			{" and " * t * }
 		      if$
 		    }
  		   if$
@@ -419,7 +420,7 @@ numnames #3 >	%%---	著者数が〇人以上でet al.形式にしたいとき、
  		    {", " * t * }
 		    { numnames #2 =
  			{" and " * t * }
- 			{", and " * t * }
+ 			{" and " * t * }
 		      if$
 		    }
  		   if$
@@ -547,7 +548,7 @@ if$
 
 FUNCTION {format.btitle}
 
-{ title emphasize
+{ title
 }
 
 FUNCTION {tie.or.space.connect}
@@ -861,9 +862,9 @@ FUNCTION {format.in.ed.booktitle}
     { "" }
     { editor empty$
  	{ booktitle is.kanji.str$
- 	    { " " booktitle emphasize * }
+ 	    { " " booktitle * }
 
- 	    { "In " booktitle emphasize * }
+ 	    { "In " booktitle * }
 
  	  if$
  	}
